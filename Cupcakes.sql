@@ -1,48 +1,5 @@
-CREATE TABLE Cupcakes 
-(
-cupId int,
-custId int,
-flavor varchar(256),
-filling varchar(256),
-PRIMARY KEY (id)
-)
-
-CREATE TABLE Fillings
-(
-fName varchar(256),
-picture varchar(256),
-PRIMARY KEY name
-)
-
-CREATE TABLE Flavors
-(
-flName varchar(256),
-picture varchar(256),
-PRIMARY KEY name
-)
-
-CREATE TABLE Frostings
-(
-frName varchar(256),
-picture varchar(256),
-PRIMARY KEY name
-)
-
-CREATE TABLE Toppings
-(
-tName varchar(256),
-picture varchar(256),
-PRIMARY KEY name
-)
-
-CREATE TABLE Orders
-(
-orderId int,
-custId int,
-cost float,
-PRIMARY KEY orderId,
-FOREIGN KEY custId REFERENCES Customers(custId)
-)
+CREATE DATABASE Cupcakes;
+USE Cupcakes;
 
 CREATE TABLE Customers
 (
@@ -54,10 +11,56 @@ password varchar(256),
 address varchar(256),
 city varchar(256),
 state varchar(256),
-zipcode varchar(256),
+telNumer varchar(256),
+zipcode int,
 onMailingList bool,
-PRIMARY KEY custId
-)
+PRIMARY KEY (custId)
+);
+
+CREATE TABLE Cupcakes 
+(
+cupId int,
+custId int,
+flavor varchar(256),
+filling varchar(256),
+PRIMARY KEY (cupId)
+);
+
+CREATE TABLE Fillings
+(
+fName varchar(256),
+picture varchar(256),
+PRIMARY KEY (fName)
+);
+
+CREATE TABLE Flavors
+(
+flName varchar(256),
+picture varchar(256),
+PRIMARY KEY (flName)
+);
+
+CREATE TABLE Frostings
+(
+frName varchar(256),
+picture varchar(256),
+PRIMARY KEY (frName)
+);
+
+CREATE TABLE Toppings
+(
+tName varchar(256),
+picture varchar(256),
+PRIMARY KEY (tName)
+);
+
+CREATE TABLE Orders
+(
+orderId int,
+custId int,
+PRIMARY KEY (orderId),
+FOREIGN KEY (custId) REFERENCES Customers(custId)
+);
 
 CREATE TABLE Favorites
 (
@@ -66,31 +69,33 @@ custId int,
 cupId int,
 frID int,
 fID int,
-PRIMARY KEY empId,
-FOREIGN KEY cupId REFERENCES Cupcakes(cupId) 
-)
+PRIMARY KEY (favId),
+FOREIGN KEY (cupId) REFERENCES Cupcakes(cupId) 
+);
 
 CREATE TABLE Employees
 (
 empId int,
-PRIMARY KEY empId
-)
+PRIMARY KEY (empId)
+);
 
 CREATE TABLE ToppingsBridge
 (
 tbId int,
 favId int, 
-tName int,
-PRIMARY KEY empId,
-FOREIGN KEY tName REFERENCES Toppings(tName)
-)
+tName varchar(256),
+PRIMARY KEY (tbId),
+FOREIGN KEY (tName) REFERENCES Toppings(tName),
+FOREIGN KEY (favId) REFERENCES Favorites(favId)
+);
 
 CREATE TABLE SalesBridge
 (
 sbpId int,
 empId int,
-tName int,
-amtSold int,
-PRIMARY KEY empId,
-FOREIGN KEY empId, tpId REFERENCES Employees(empId), Toppings(tId)
-)
+tName varchar(256),
+amtSold int DEFAULT 0,
+PRIMARY KEY (sbpId),
+FOREIGN KEY (empId) REFERENCES Employees(empId),
+FOREIGN KEY (tName) REFERENCES Toppings(tName)
+);
