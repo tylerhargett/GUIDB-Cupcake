@@ -8,8 +8,8 @@
 
 <?PHP
     #create connection - FILL IN SERVER USERNAME AND PASSWORD
-    $connection = mysql_connect($server, $username, $password)
-    mysql_select_db('Customers');
+    $connection = mysql_connect(localhost, phpuser, password)
+    mysql_select_db('Cupcakes');
     
     
     $file_handle = fopen("CustomCupcakesDBData-Users.csv", "r");
@@ -31,7 +31,7 @@
         $Password= $parts[9];
         $TelephoneNumber= $parts[10];
         
-        $query = "INSERT INTO Customers VALUES('$UserId','$OnMailingList','$GivenName','$Surname','$StreetAddress','$City','$State','$ZipCode','$EmailAddress','$Password','$TelephoneNumber')";
+        $query = "INSERT INTO Customers(custID, onMailingList, fName, lName, address, city, state, zipcode, email, password, telNumber) VALUES('$UserId','$OnMailingList','$GivenName','$Surname','$StreetAddress','$City','$State','$ZipCode','$EmailAddress','$Password','$TelephoneNumber')";
         mysql_query($query);
         mysql_close();
     }
