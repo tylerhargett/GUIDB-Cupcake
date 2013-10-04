@@ -19,17 +19,15 @@ PRIMARY KEY (custId)
 
 CREATE TABLE Cupcakes 
 (
-cupId int,
-custId int,
-flavor varchar(256),
 filling varchar(256),
+picture varchar(256),
 PRIMARY KEY (cupId)
 );
 
 CREATE TABLE Fillings
 (
 fName varchar(256),
-picture varchar(256),
+rgb varchar(256),
 PRIMARY KEY (fName)
 );
 
@@ -50,7 +48,6 @@ PRIMARY KEY (frName)
 CREATE TABLE Toppings
 (
 tName varchar(256),
-picture varchar(256),
 PRIMARY KEY (tName)
 );
 
