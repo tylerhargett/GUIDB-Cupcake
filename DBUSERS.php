@@ -8,11 +8,16 @@
 
 <?PHP
     #create connection - FILL IN SERVER USERNAME AND PASSWORD
-    $connection = mysql_connect(localhost, phpuser, password)
-    mysql_select_db('Cupcakes');
+    $con = mysql_connect("localhost", "phpuser", "password");
+    if(!$con)
+    {
+        die('Could not connect: ' . mysql_error());
+    }
+    mysql_select_db("Cupcakes", $con)
+        or die("Unable to connect to the database : " . mysql_error());
     
     
-    $file_handle = fopen("CustomCupcakesDBData-Users.csv", "r");
+    $file_handle = fopen("A6/CustomCupcakesDBData-Users.csv", "r");
     
     while (!feof($file_handle))
     {
