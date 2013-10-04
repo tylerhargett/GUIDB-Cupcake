@@ -8,7 +8,7 @@
 #  Created by Tyler Hargett on 10/4/13.
 #
     #create connection - FILL IN SERVER USERNAME AND PASSWORD
-    $con = mysql_connect("Projectsite", "phpuser", "password");
+    $con = mysql_connect("Projectsite", "root", "giant");
     if(!$con)
     {
         die('Could not connect: ' . mysql_error());
@@ -17,7 +17,7 @@
         or die("Unable to connect to the database : " . mysql_error());
     
     
-    $file_handle = fopen("A6/CustomCupcakesDBData-Users.csv", "r");
+    $file_handle = fopen("A6/data/CustomCupcakesDBData-Users.csv", "r");
     
     while (!feof($file_handle))
     {
@@ -40,5 +40,6 @@
         mysql_query($query);
         mysql_close();
     }
+
     
 ?>
