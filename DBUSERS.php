@@ -1,3 +1,5 @@
+
+<?php
 #!/bin/sh
 
 #  CSVparse.php
@@ -5,10 +7,8 @@
 #
 #  Created by Tyler Hargett on 10/4/13.
 #
-
-<?PHP
     #create connection - FILL IN SERVER USERNAME AND PASSWORD
-    $con = mysql_connect("localhost", "phpuser", "password");
+    $con = mysql_connect("Projectsite", "phpuser", "password");
     if(!$con)
     {
         die('Could not connect: ' . mysql_error());
@@ -22,7 +22,7 @@
     while (!feof($file_handle))
     {
         $line_of_text = fgetcsv($file_handle, 4048);
-        $parts = explode(',' $line_of_text);
+        $parts = explode(',', $line_of_text);
         
         $UserId = (int)$parts[0];
         $OnMailingList = ($parts[1] == "yes");
