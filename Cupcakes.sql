@@ -1,6 +1,6 @@
 CREATE TABLE Cupcakes 
 (
-id int,
+cupId int,
 custId int,
 flavor varchar(256),
 filling varchar(256),
@@ -8,7 +8,30 @@ PRIMARY KEY (id)
 )
 
 CREATE TABLE Fillings
-name varchar(256),
+(
+fName varchar(256),
+picture varchar(256),
+PRIMARY KEY name
+)
+
+CREATE TABLE Flavors
+(
+flName varchar(256),
+picture varchar(256),
+PRIMARY KEY name
+)
+
+CREATE TABLE Frostings
+(
+frName varchar(256),
+picture varchar(256),
+PRIMARY KEY name
+)
+
+CREATE TABLE Toppings
+(
+tName varchar(256),
+picture varchar(256),
 PRIMARY KEY name
 )
 
@@ -32,17 +55,42 @@ address varchar(256),
 city varchar(256),
 state varchar(256),
 zipcode varchar(256),
+onMailingList bool,
 PRIMARY KEY custId
 )
 
-CREATE TABLE Maillist
+CREATE TABLE Favorites
 (
+favId int,
 custId int,
-PRIMARY KEY custId
+cupId int,
+frID int,
+fID int,
+PRIMARY KEY empId,
+FOREIGN KEY cupId REFERENCES Cupcakes(cupId) 
 )
 
 CREATE TABLE Employees
 (
 empId int,
 PRIMARY KEY empId
+)
+
+CREATE TABLE ToppingsBridge
+(
+tbId int,
+favId int, 
+tName int,
+PRIMARY KEY empId,
+FOREIGN KEY tName REFERENCES Toppings(tName)
+)
+
+CREATE TABLE SalesBridge
+(
+sbpId int,
+empId int,
+tName int,
+amtSold int,
+PRIMARY KEY empId,
+FOREIGN KEY empId, tpId REFERENCES Employees(empId), Toppings(tId)
 )
