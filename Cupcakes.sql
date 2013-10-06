@@ -48,6 +48,7 @@ PRIMARY KEY (frName)
 CREATE TABLE Toppings
 (
 tName varchar(256),
+tId int,
 PRIMARY KEY (tName)
 );
 
@@ -80,9 +81,9 @@ CREATE TABLE ToppingsBridge
 (
 tbId int,
 favId int, 
-tName varchar(256),
+tId int,
 PRIMARY KEY (tbId),
-FOREIGN KEY (tName) REFERENCES Toppings(tName),
+FOREIGN KEY (tId) REFERENCES Toppings(tId),
 FOREIGN KEY (favId) REFERENCES Favorites(favId)
 );
 
