@@ -22,7 +22,7 @@
 		$ToppingId= (int)$parts[2];
 
         $query = "INSERT INTO ToppingsBridge(tbId, favId, tName)
-					VALUES('$ToppingsBridgeId', '$FavoriteId', '$ToppingId')";
+					VALUES('$_POST[ToppingsBridgeId]', '$_POST[FavoriteId]', '$_POST[ToppingId]')";
         mysql_query($query);
         mysql_close();
     }
