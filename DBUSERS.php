@@ -36,7 +36,8 @@
         $Password= $parts[9];
         $TelephoneNumber= $parts[10];
         
-        $query = "INSERT INTO Customers(custID, onMailingList, fName, lName, address, city, state, zipcode, email, password, telNumber) VALUES('$UserId','$OnMailingList','$GivenName','$Surname','$StreetAddress','$City','$State','$ZipCode','$EmailAddress','$Password','$TelephoneNumber')";
+        $query = "INSERT INTO Customers(custID, onMailingList, fName, lName, address, city, state, zipcode, email, password, telNumber) 
+        VALUES('$_POST[UserId]','$_POST[OnMailingList]','$_POST[GivenName]','$_POST[Surname]','$_POST[StreetAddress]','$_POST[City]','$_POST[State]','$_POST[ZipCode]','$_POST[EmailAddress]','$_POST[Password]','$_POST[TelephoneNumber]')";
         mysql_query($query);
         mysql_close();
     }
