@@ -28,7 +28,7 @@
         $ToppingId = $line_of_text[2];
         
         if ($count != 0){
-            $query = "INSERT INTO ToppingsBridge(ToppingsBridgeId, FavoriteId, ToppingId) VALUES('$ToppingsBridgeId','$FavoriteId', '$ToppingId')";
+            $query = "INSERT INTO toppings_bridge(id, favorite_id, topping_id) VALUES('$ToppingsBridgeId','$FavoriteId', '$ToppingId')";
             mysql_query($query);
         }
     echo mysql_error($con);
