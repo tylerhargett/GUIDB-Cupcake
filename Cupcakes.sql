@@ -53,15 +53,6 @@ CREATE TABLE cupcakes (
 	FOREIGN KEY (flavor_id) REFERENCES flavors(id) ON DELETE CASCADE
 );
 
-CREATE TABLE toppings_bridge (
-	id		INT UNSIGNED		NOT NULL,
-	favorite_id	INT UNSIGNED		NOT NULL,
-	topping_id	INT UNSIGNED		NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE,
-	FOREIGN KEY (favorite_id) REFERENCES favorites(id) ON DELETE CASCADE
-);
-
 CREATE TABLE favorites (
 	id		INT UNSIGNED		NOT NULL,
 	customer_id	INT UNSIGNED		NOT NULL,
@@ -74,3 +65,14 @@ CREATE TABLE favorites (
 	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE,
 	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE,
 );
+
+
+CREATE TABLE toppings_bridge (
+	id			INT UNSIGNED		NOT NULL,
+	favorite_id	INT UNSIGNED		NOT NULL,
+	topping_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE,
+	FOREIGN KEY (favorite_id) REFERENCES favorites(id) ON DELETE CASCADE
+);
+
