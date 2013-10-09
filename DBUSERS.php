@@ -35,8 +35,9 @@
         $EmailAddress= $line_of_text[8];
         $Password= $line_of_text[9];
         $TelephoneNumber= $line_of_text[10];
+        
         if ($count != 0){
-            $query = "INSERT INTO Customers(custID, onMailingList, fName, lName, address, city, state, zipcode, email, password, telNumer) VALUES('$UserId','$OnMailingList','$GivenName','$Surname','$StreetAddress','$City','$State','$ZipCode','$EmailAddress','$Password','$TelephoneNumber')";
+            $query = "INSERT INTO customers(id, onMailingList, first_name, last_name, address, city, state, zipcode, email, pass, telNumer) VALUES('$UserId','$OnMailingList','$GivenName','$Surname','$StreetAddress','$City','$State','$ZipCode','$EmailAddress','$Password','$TelephoneNumber')";
             mysql_query($query);
         }
     echo mysql_error($con);
