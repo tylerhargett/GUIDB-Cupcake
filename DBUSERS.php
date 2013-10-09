@@ -18,28 +18,34 @@
     
     
     $file_handle = fopen("A6/data/CustomCupcakesDBData-Users.csv", "r");
-    
+
+    $count = 0;
     while (!feof($file_handle))
-    {
+    {   
+
         $line_of_text = fgetcsv($file_handle, 4048);
-        $parts = explode(',', $line_of_text);
-        
-        $UserId = (int)$parts[0];
-        $OnMailingList = ($parts[1] == "yes");
-        $GivenName = $parts[2];
-        $Surname= $parts[3];
-        $StreetAddress= $parts[4];
-        $City= $parts[5];
-        $State= $parts[6];
-        $ZipCode= (int)$parts[7];
-        $EmailAddress= $parts[8];
-        $Password= $parts[9];
-        $TelephoneNumber= $parts[10];
-        
+        //$parts = explode(",", $line_of_text);
+        $UserId = (int)$line_of_text[0];
+        $OnMailingList = ($line_of_text[1] == "yes");
+        $GivenName = $line_of_text[2];
+        $Surname= $line_of_text[3];
+        $StreetAddress= $line_of_text[4];
+        $City= $line_of_text[5];
+        $State= $line_of_text[6];
+        $ZipCode= (int)$line_of_text[7];
+        $EmailAddress= $line_of_text[8];
+        $Password= $line_of_text[9];
+        $TelephoneNumber= $line_of_text[10];
+        if ($count != 0){
+            echo $count;
         $query = "INSERT INTO Customers(custID, onMailingList, fName, lName, address, city, state, zipcode, email, password, telNumber) VALUES('$UserId','$OnMailingList','$GivenName','$Surname','$StreetAddress','$City','$State','$ZipCode','$EmailAddress','$Password','$TelephoneNumber')";
         mysql_query($query);
-        mysql_close();
-    }
+        }
+        $count = $count + 1;
 
+
+    }
+        mysql_close($con);
+    echo "worked";
     
 ?>
