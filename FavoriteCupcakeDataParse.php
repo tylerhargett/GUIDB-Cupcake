@@ -12,7 +12,7 @@
     {
         die('Could not connect: ' . mysql_error());
     }
-    mysql_select_db("Cupcakes", $con)
+    mysql_select_db("cupcakes", $con)
         or die("Unable to connect to the database : " . mysql_error());
     
     
@@ -29,10 +29,12 @@
         $FrostingId = $line_of_text[3];
         $CupcakeFillingId = $line_of_text[4];
         
-        if ($count != 0){
-             $query = "INSERT INTO favorites(id, customer_id, cupcake_id, frosting_id, filling_id) VALUES('$FavoriteId','$UserId', '$CupcakeId', '$FrostingId', '$CupcakeFillingId')";
+        if ($count != 0 && strlen($FavoriteId)){
+             $query = "INSERT INTO favorites(id, customer_id, cake_id, frosting_id, filling_id) VALUES('$FavoriteId','$UserId', '$CupcakeId', '$FrostingId', '$CupcakeFillingId')";
+
             mysql_query($query);
         }
+
     echo mysql_error($con);
     $count = $count +1;
 
