@@ -12,7 +12,7 @@
     {
         die('Could not connect: ' . mysql_error());
     }
-    mysql_select_db("Cupcakes", $con)
+    mysql_select_db("cupcakes", $con)
         or die("Unable to connect to the database : " . mysql_error());
     
     
@@ -27,7 +27,7 @@
         $FavoriteId = $line_of_text[1];
         $ToppingId = $line_of_text[2];
         
-        if ($count != 0){
+        if ($count != 0 && strlen($ToppingId)){
             $query = "INSERT INTO toppings_bridge(id, favorite_id, topping_id) VALUES('$ToppingsBridgeId','$FavoriteId', '$ToppingId')";
             mysql_query($query);
         }
