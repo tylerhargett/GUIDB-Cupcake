@@ -1,0 +1,76 @@
+DROP DATABASE IF EXISTS cupcakes;
+
+CREATE DATABASE cupcakes;
+USE cupcakes;
+
+CREATE TABLE customers (
+	id 		INT UNSIGNED		NOT NULL,
+	first_name 	VARCHAR(256)		NOT NULL,
+	last_name 	VARCHAR(256)		NOT NULL,
+	email 		VARCHAR(256)		NOT NULL,
+	pass 		VARCHAR(256)		NOT NULL,
+	address 	VARCHAR(256)		NOT NULL,
+	city 		VARCHAR(256)		NOT NULL,
+	state 		VARCHAR(256)		NOT NULL,
+	telNumer 	VARCHAR(256)		NOT NULL,
+	zipcode 	TINYINT UNSIGNED	NOT NULL,
+	onMailingList 	BOOL			NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE fillings (
+	id		INT UNSIGNED		NOT NULL,
+	name		VARCHAR(256)		NOT NULL,
+	rgb		VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE flavors (
+	id		INT UNSIGNED		NOT NULL,
+	name 		VARCHAR(256)		NOT NULL,
+	picture		VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE frostings (
+	id		INT UNSIGNED		NOT NULL,
+	name 		VARCHAR(256)		NOT NULL,
+	picture 	VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE toppings (
+	id		INT UNSIGNED		NOT NULL,
+	name 		VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE cupcakes (
+	id		INT UNSIGNED 		NOT NULL,
+	flavor_id 	INT UNSIGNED		NOT NULL,
+	picture 	VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (flavor_id) REFERENCES flavors(id) ON DELETE CASCADE
+);
+
+CREATE TABLE toppings_bridge (
+	id		INT UNSIGNED		NOT NULL,
+	favorite_id	INT UNSIGNED		NOT NULL,
+	topping_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE,
+	FOREIGN KEY (favorite_id) REFERENCES favorites(id) ON DELETE CASCADE
+);
+
+CREATE TABLE favorites (
+	id		INT UNSIGNED		NOT NULL,
+	customer_id	INT UNSIGNED		NOT NULL,
+	cupcake_id	INT UNSIGNED		NOT NULL,
+	frosting_id	INT UNSIGNED		NOT NULL,
+	filling_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
+	FOREIGN KEY (cupcake_id) REFERENCES cupcakes(id) ON DELETE CASCADE,
+	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE,
+	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE,
+);
