@@ -42,8 +42,7 @@ CREATE TABLE cakes (
 	id		INT UNSIGNED 		NOT NULL AUTO_INCREMENT,
 	flavor 		VARCHAR(256)		NOT NULL,
 	picture 	VARCHAR(256)		NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (flavor_id) REFERENCES flavors(id) ON DELETE CASCADE
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE favorites (
@@ -71,5 +70,5 @@ CREATE TABLE toppings_bridge (
 CREATE TABLE orders (
 	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
 	customer_id	INT UNSIGNED		NOT NULL,
-
+	
 );
