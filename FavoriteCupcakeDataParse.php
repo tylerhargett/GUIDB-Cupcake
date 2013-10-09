@@ -30,7 +30,7 @@
         $CupcakeFillingId = $line_of_text[4];
         
         if ($count != 0){
-            $query = "INSERT INTO FavoriteCupcakes(FavoriteId, UserId, CupcakeId, FrostingId, CupcakeFillingId) VALUES('$FavoriteId','$UserId', '$CupcakeId', '$FrostingId', '$CupcakeFillingId')";
+             $query = "INSERT INTO favorites(id, customer_id, cupcake_id, frosting_id, filling_id) VALUES('$FavoriteId','$UserId', '$CupcakeId', '$FrostingId', '$CupcakeFillingId')";
             mysql_query($query);
         }
     echo mysql_error($con);
