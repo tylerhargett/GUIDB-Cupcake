@@ -69,6 +69,5 @@ CREATE TABLE toppings_bridge (
 
 CREATE TABLE orders (
 	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
-	customer_id	INT UNSIGNED		NOT NULL,
-	
+	customer_id	INT UNSIGNED		NOT NULL
 );
