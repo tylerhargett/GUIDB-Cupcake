@@ -63,7 +63,7 @@ CREATE TABLE favorites (
 	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
 	FOREIGN KEY (cupcake_id) REFERENCES cupcakes(id) ON DELETE CASCADE,
 	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE,
-	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE,
+	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE
 );
 
 
