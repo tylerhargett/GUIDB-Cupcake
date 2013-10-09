@@ -1,98 +1,97 @@
-CREATE DATABASE Cupcakes;
-USE Cupcakes;
+DROP DATABASE IF EXISTS cupcakes;
 
-CREATE TABLE Customers
-(
-custId int,
-fName varchar(256),
-lName varchar(256),
-email varchar(256),
-password varchar(256),
-address varchar(256),
-city varchar(256),
-state varchar(256),
-telNumer varchar(256),
-zipcode int,
-onMailingList bool,
-PRIMARY KEY (custId)
+CREATE DATABASE cupcakes;
+USE cupcakes;
+
+CREATE TABLE customers (
+	id 		INT UNSIGNED		NOT NULL,
+	first_name 	VARCHAR(256)		NOT NULL,
+	last_name 	VARCHAR(256)		NOT NULL,
+	email 		VARCHAR(256)		NOT NULL,
+	pass 		VARCHAR(256)		NOT NULL,
+	address 	VARCHAR(256)		NOT NULL,
+	city 		VARCHAR(256)		NOT NULL,
+	state 		VARCHAR(256)		NOT NULL,
+	telNumer 	VARCHAR(256)		NOT NULL,
+	zipcode 	INT UNSIGNED		NOT NULL,
+	onMailingList 	BOOL			NOT NULL,
+	PRIMARY KEY (id)
 );
 
-CREATE TABLE Cupcakes 
-(
-filling varchar(256),
-picture varchar(256),
-PRIMARY KEY (cupId)
+CREATE TABLE fillings (
+	id		INT UNSIGNED		NOT NULL AUTO_INCREMENT,
+	name		VARCHAR(256)		NOT NULL,
+	rgb		VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
 );
 
-CREATE TABLE Fillings
-(
-fName varchar(256),
-rgb varchar(256),
-PRIMARY KEY (fName)
+CREATE TABLE frostings (
+	id		INT UNSIGNED		NOT NULL AUTO_INCREMENT,
+	name 		VARCHAR(256)		NOT NULL,
+	picture 	VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
 );
 
-CREATE TABLE Flavors
-(
-flName varchar(256),
-picture varchar(256),
-PRIMARY KEY (flName)
+CREATE TABLE toppings (
+	id		INT UNSIGNED		NOT NULL AUTO_INCREMENT,
+	name 		VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
 );
 
-CREATE TABLE Frostings
-(
-frName varchar(256),
-picture varchar(256),
-PRIMARY KEY (frName)
+CREATE TABLE cakes (
+	id		INT UNSIGNED 		NOT NULL AUTO_INCREMENT,
+	flavor 		VARCHAR(256)		NOT NULL,
+	picture 	VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
 );
 
-CREATE TABLE Toppings
-(
-tName varchar(256),
-PRIMARY KEY (tName)
+CREATE TABLE favorites (
+	id		INT UNSIGNED		NOT NULL,
+	customer_id	INT UNSIGNED		NOT NULL,
+	cake_id		INT UNSIGNED		NOT NULL,
+	frosting_id	INT UNSIGNED		NOT NULL,
+	filling_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
+	FOREIGN KEY (cake_id) REFERENCES cakes(id) ON DELETE CASCADE,
+	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE,
+	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Orders
-(
-orderId int,
-custId int,
-PRIMARY KEY (orderId),
-FOREIGN KEY (custId) REFERENCES Customers(custId)
+CREATE TABLE toppings_bridge (
+	id		INT UNSIGNED		NOT NULL,
+	favorite_id	INT UNSIGNED		NOT NULL,
+	topping_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE,
+	FOREIGN KEY (favorite_id) REFERENCES favorites(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Favorites
-(
-favId int,
-custId int,
-cupId int,
-frID int,
-fID int,
-PRIMARY KEY (favId),
-FOREIGN KEY (cupId) REFERENCES Cupcakes(cupId) 
+CREATE TABLE orders (
+	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
+	customer_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Employees
-(
-empId int,
-PRIMARY KEY (empId)
+CREATE TABLE order_bridge (
+	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
+	order_id	INT UNSIGNED		NOT NULL,
+	cake_id		INT UNSIGNED		NOT NULL,
+	filling_id	INT UNSIGNED		NOT NULL,
+	frosting_id	INT UNSIGNED		NOT NULL,
+	quantity	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+	FOREIGN KEY (cake_id) REFERENCES cakes(id) ON DELETE CASCADE,
+	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE,
+	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE
 );
 
-CREATE TABLE ToppingsBridge
-(
-tbId int,
-favId int, 
-tName varchar(256),
-PRIMARY KEY (tbId),
-FOREIGN KEY (tName) REFERENCES Toppings(tName),
-FOREIGN KEY (favId) REFERENCES Favorites(favId)
-);
-
-CREATE TABLE SalesBridge
-(
-sbpId int,
-empId int,
-tName varchar(256),
-amtSold int DEFAULT 0,
-PRIMARY KEY (sbpId),
-FOREIGN KEY (empId) REFERENCES Employees(empId),
-FOREIGN KEY (tName) REFERENCES Toppings(tName)
+CREATE TABLE order_topping_bridge (
+	order_id	INT UNSIGNED		NOT NULL,
+	topping_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (order_id,topping_id),
+	FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE
 );
