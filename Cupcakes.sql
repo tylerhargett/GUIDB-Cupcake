@@ -13,7 +13,7 @@ CREATE TABLE customers (
 	city 		VARCHAR(256)		NOT NULL,
 	state 		VARCHAR(256)		NOT NULL,
 	telNumer 	VARCHAR(256)		NOT NULL,
-	zipcode 	TINYINT UNSIGNED	NOT NULL,
+	zipcode 	INT UNSIGNED		NOT NULL,
 	onMailingList 	BOOL			NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -70,5 +70,28 @@ CREATE TABLE toppings_bridge (
 CREATE TABLE orders (
 	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
 	customer_id	INT UNSIGNED		NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_bridge (
+	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
+	order_id	INT UNSIGNED		NOT NULL,
+	cake_id		INT UNSIGNED		NOT NULL,
+	filling_id	INT UNSIGNED		NOT NULL,
+	frosting_id	INT UNSIGNED		NOT NULL,
+	quantity	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+	FOREIGN KEY (cake_id) REFERENCES cakes(id) ON DELETE CASCADE,
+	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE,
+	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_topping_bridge (
+	order_id	INT UNSIGNED		NOT NULL,
+	topping_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (order_id,topping_id),
+	FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE
 );
