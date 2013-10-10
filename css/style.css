@@ -48,10 +48,11 @@ div#navBarContainer {
 		
 	
 div#Container {
+	position: relative;
 	margin-left: auto;
 	margin-right: auto;
 	width: 900px;
-	height: 1000px;
+	height: 1200px;
 	
 	background-color: white;
 	border-left:2px solid #1B3280;

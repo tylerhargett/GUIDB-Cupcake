@@ -1,0 +1,61 @@
+div#BuilderContainer {
+	width: 550px;
+	height: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+	div#Flavor {
+		border:1px solid #ccc;
+		width: 530px;
+		height: 100px;
+		margin-left: auto;
+		margin-right: auto;	
+	}
+	div#Filling {
+		border:1px solid #ccc;
+		width: 530px;
+		height: 100px;
+		margin-left: auto;
+		margin-right: auto;	
+	}
+	div#Icing {
+		border:1px solid #ccc;
+		width: 530px;
+		height: 100px;
+		margin-left: auto;
+		margin-right: auto;	
+	}
+	div#Toppings {
+		border:1px solid #ccc;
+		width: 530px;
+		height: 250px;
+		margin-left: auto;
+		margin-right: auto;	
+	}
+	div#BuilderContainer span {
+		margin-left: 20px;
+	}
+	
+
+div#currItems {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	height:150px;
+	width:300px;
+	
+	border:1px solid #ccc;
+	font:16px/26px Georgia, Garamond, Serif;
+	overflow:auto;
+}
+div#Favorites {
+	position: absolute;
+	top: 200px;
+	left: 20px;
+	height:600px;
+	width:120px;
+	
+	border:1px solid #ccc;
+	font:16px/26px Georgia, Garamond, Serif;
+	overflow:auto;
+}
