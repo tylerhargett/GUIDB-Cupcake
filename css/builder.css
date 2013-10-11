@@ -9,29 +9,52 @@ div#BuilderContainer {
 		width: 530px;
 		height: 100px;
 		margin-left: auto;
-		margin-right: auto;	
+		margin-right: auto;
+		overflow-x: auto;	
 	}
+		div#Flavor p {
+			display: inline-block;
+			margin: 10px 10px 10px 10px;
+		}
 	div#Filling {
 		border:1px solid #ccc;
 		width: 530px;
 		height: 100px;
 		margin-left: auto;
-		margin-right: auto;	
+		margin-right: auto;
+		overflow-x: auto;
 	}
+		div#Filling div {
+			display: inline-block;
+			margin: 10px 10px 10px 10px;
+			width: 107px;
+			height: 107px;
+		}
 	div#Icing {
 		border:1px solid #ccc;
 		width: 530px;
 		height: 100px;
 		margin-left: auto;
-		margin-right: auto;	
+		margin-right: auto;
+		overflow-x: auto;
+			
 	}
+		div#Icing p {
+			display: inline-block;
+			margin: 10px 10px 10px 10px;
+		}
 	div#Toppings {
 		border:1px solid #ccc;
 		width: 530px;
 		height: 250px;
 		margin-left: auto;
-		margin-right: auto;	
+		margin-right: auto;
+		overflow: auto;
 	}
+		div#Toppings {
+			display: block;
+			margin: 10px 10px 10px 10px;
+		}
 	div#BuilderContainer span {
 		margin-left: 20px;
 	}

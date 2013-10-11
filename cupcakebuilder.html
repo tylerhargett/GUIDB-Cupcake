@@ -3,6 +3,7 @@
 	<TITLE>Custom Cupcakes</TITLE>
 	<LINK REL="stylesheet" TYPE="text/css" HREF="css/style.css">
 	<LINK REL="stylesheet" TYPE="text/css" HREF="css/builder.css">
+	<script type="text/javascript" src="js/parse-json.js"></script>
 </HEAD
 <BODY>
 	<DIV ID="navBarContainer">
@@ -16,6 +17,7 @@
 		
 		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 		<DIV ID="BuilderContainer">
+		<FORM ACTION="insertorder.php" METHOD="POST">
 			<br /><br />
 			<SPAN>Flavor</SPAN>
 			<DIV ID="Flavor">
@@ -36,6 +38,11 @@
 			<DIV ID="Toppings">
 			
 			</DIV>
+			<INPUT TYPE="checkbox" name="fav" ID="favorite">Add to Favorites
+			Confirm your email:<INPUT TYPE="text" name="email" ID="email"><br>
+			Quantity: <input type="text" name="quantity" id="quantity" value="1"> 
+			<INPUT TYPE="submit" value="submit" STYLE="float:right; display: block;">	
+		</FORM> 
 		</DIV>
 	</DIV>
 </BODY>
