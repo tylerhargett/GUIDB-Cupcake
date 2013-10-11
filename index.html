@@ -2,69 +2,41 @@
 <HEAD>
 	<TITLE>Custom Cupcakes</TITLE>
 	<LINK REL="stylesheet" TYPE="text/css" HREF="css/style.css">
+	<script language="javascript" type="text/javascript" src="js/validation.js"></script>
 </HEAD
 <BODY>
 	<DIV ID="Login">
-		<FORM>
+		<FORM name="login" ACTION="login.php" METHOD="POST">
 			Email: <input type="text" name="firstname" size="20"> Password: <input type="text" name="lastname"> <input type="submit" value="Login">
 		</FORM>
 	</DIV>
 	<br /><br />
 	<DIV ID="navBarContainer">
-		<TABLE ID="navBar">
-			<TR>
-				<TD ID="Link"><A HREF="index.html">Home</A></TD>
-				<TD><DIV></DIV></TD>
-				<TD ID="Link"><A HREF="cupcakebuilder.html">Build A Cupcake</A></TD>
-				<TD><DIV></DIV></TD>
-				<TD ID="Link"><A HREF="#">Our Cupcakes</A></TD>
-				<TD><DIV></DIV></TD>
-				<TD ID="Link"><A HREF="#">About Us</A></TD>
-				<TD><DIV></DIV></TD>
-				<TD ID="Link"><A HREF="#">Contact Us</A></TD>
-			</TR>
-		</TABLE>
+		<!--Contained previous links, styled differently now-->
 	</DIV>
 	<DIV ID="Container">
-		<DIV ID="AccountBar">
-			<DIV ID="Welcome">
-				<B><I>Welcome, <A HREF="#">&lt;Customer&gt;!</A></I></B>
-			</DIV>
-			<DIV ID="ShoppingCart">
-				<A HREF="#"><IMG SRC="img/cart.png" ALT="Shopping Cart"></A><A HREF="#"><B>Shopping Cart</B></A>
-			</DIV>
-		</DIV>
 		<DIV ID="Logo">
 			<IMG SRC="img/logo.png"><br />
 			&nbsp;&nbsp;&nbsp;Great Flavors! <br /><br />
 			&nbsp;&nbsp;&nbsp;Awesome Cupcakes <br /><br />
 			&nbsp;&nbsp;&nbsp;Fast Delivery! <br /><br />
-			
 		</DIV>
 		<DIV ID="CreateAccount">
 			<H2>Create a Custom Cupcake Account</H2>
 			<hr>
-			<FORM NAME="reg" onsubmit="return validateRegistration()" >
-				<label>Join Our Mailing List:</label> <input type="radio" name="mailinglist" value="yes">Yes <input type="radio" name="mailinglist" value="no">No
-					<DIV ID="err1"></DIV><br />
-				<label>First Name:</label> <input type="text" name="fname">
-					<DIV ID="err2"></DIV><br />
-				<label>Last Name:</label> <input type="text" name="lname">
-					<DIV ID="err3"></DIV><br />
-				<label>Email:</label> <input type="text" name="email">
-					<DIV ID="err4"></DIV><br />
-				<label>Password:</label> <input type="text" name="pw">
-					<DIV ID="err5"></DIV><br />
-				<label>Telephone Number:</label> <input type="text" name="tele">
-					<DIV ID="err6"></DIV><br />
-				<label>Address:</label> <input type="text" name="addr">
-					<DIV ID="err7"></DIV><br />
-				<label>City:</label> <input type="text" name="city">
-					<DIV ID="err8"></DIV><br />
-				<label>State:</label> <input type="text" name="state">
-					<DIV ID="err9"></DIV><br />
-				<label>Zip Code:</label> <input type="text" name="zip">
-					<DIV ID="err10"></DIV><br />
+			<FORM name="reg" ACTION="register.php" METHOD="POST" onsubmit="return validateRegistration()" >
+				<label>Join Our Mailing List:</label> <input type="radio" name="mailinglist" value="yes" ID="yes">Yes 
+													  <input type="radio" name="mailinglist" value="no" ID="no">No
+													  <DIV ID="err1"></DIV><br />
+				<label>First Name:</label> <input type="text" name="fname"><DIV ID="err2"></DIV><br />
+				<label>Last Name:</label> <input type="text" name="lname"><DIV ID="err3"></DIV><br />
+				<label>Email:</label> <input type="text" name="email"><DIV ID="err4"></DIV><br />
+				<label>Password:</label> <input type="text" name="pw"><DIV ID="err5"></DIV><br />
+				<label>Telephone Number:</label> <input type="text" name="tele"><DIV ID="err6"></DIV><br />
+				<label>Address:</label> <input type="text" name="addr"><DIV ID="err7"></DIV><br />
+				<label>City:</label> <input type="text" name="city"><DIV ID="err8"></DIV><br />
+				<label>State:</label> <input type="text" name="state"><DIV ID="err9"></DIV><br />
+				<label>Zip Code:</label> <input type="text" name="zip"><DIV ID="err10"></DIV><br />
 				<DIV><input type="submit" value="Submit"></DIV>
 			</FORM>
 		

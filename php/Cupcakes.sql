@@ -1,0 +1,97 @@
+DROP DATABASE IF EXISTS cupcakes;
+
+CREATE DATABASE cupcakes;
+USE cupcakes;
+
+CREATE TABLE customers (
+	id 		INT UNSIGNED		NOT NULL,
+	first_name 	VARCHAR(256)		NOT NULL,
+	last_name 	VARCHAR(256)		NOT NULL,
+	email 		VARCHAR(256)		NOT NULL,
+	pass 		VARCHAR(256)		NOT NULL,
+	address 	VARCHAR(256)		NOT NULL,
+	city 		VARCHAR(256)		NOT NULL,
+	state 		VARCHAR(256)		NOT NULL,
+	telNumer 	VARCHAR(256)		NOT NULL,
+	zipcode 	INT UNSIGNED		NOT NULL,
+	onMailingList 	BOOL			NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE fillings (
+	id		INT UNSIGNED		NOT NULL AUTO_INCREMENT,
+	name		VARCHAR(256)		NOT NULL,
+	rgb		VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE frostings (
+	id		INT UNSIGNED		NOT NULL AUTO_INCREMENT,
+	name 		VARCHAR(256)		NOT NULL,
+	picture 	VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE toppings (
+	id		INT UNSIGNED		NOT NULL AUTO_INCREMENT,
+	name 		VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE cakes (
+	id		INT UNSIGNED 		NOT NULL AUTO_INCREMENT,
+	flavor 		VARCHAR(256)		NOT NULL,
+	picture 	VARCHAR(256)		NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE favorites (
+	id		INT UNSIGNED		NOT NULL,
+	customer_id	INT UNSIGNED		NOT NULL,
+	cake_id		INT UNSIGNED		NOT NULL,
+	frosting_id	INT UNSIGNED		NOT NULL,
+	filling_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
+	FOREIGN KEY (cake_id) REFERENCES cakes(id) ON DELETE CASCADE,
+	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE,
+	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE
+);
+
+CREATE TABLE toppings_bridge (
+	id		INT UNSIGNED		NOT NULL,
+	favorite_id	INT UNSIGNED		NOT NULL,
+	topping_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE,
+	FOREIGN KEY (favorite_id) REFERENCES favorites(id) ON DELETE CASCADE
+);
+
+CREATE TABLE orders (
+	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
+	customer_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_bridge (
+	id		INT UNSIGNED		NOT NULL	AUTO_INCREMENT,
+	order_id	INT UNSIGNED		NOT NULL,
+	cake_id		INT UNSIGNED		NOT NULL,
+	filling_id	INT UNSIGNED		NOT NULL,
+	frosting_id	INT UNSIGNED		NOT NULL,
+	quantity	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+	FOREIGN KEY (cake_id) REFERENCES cakes(id) ON DELETE CASCADE,
+	FOREIGN KEY (filling_id) REFERENCES fillings(id) ON DELETE CASCADE,
+	FOREIGN KEY (frosting_id) REFERENCES frostings(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_topping_bridge (
+	order_id	INT UNSIGNED		NOT NULL,
+	topping_id	INT UNSIGNED		NOT NULL,
+	PRIMARY KEY (order_id,topping_id),
+	FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+	FOREIGN KEY (topping_id) REFERENCES toppings(id) ON DELETE CASCADE
+);
