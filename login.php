@@ -1,21 +1,21 @@
 <html><body> 
  <?php
 	//phpinfo();
-  	$email=isset($_POST["Username"])?$_POST["Username"]:"";
+  	$email=isset($_POST["email"])?$_POST["email"]:"";
 
-  	$password=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$password=isset($_POST["pw"])?$_POST["pw"]:"";
 
-  	$fname=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$fname=isset($_POST["fname"])?$_POST["fanme"]:"";
   	
-  	$lname=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$lname=isset($_POST["lname"])?$_POST["lname"]:"";
   	
-  	$address=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$address=isset($_POST["addr"])?$_POST["addr"]:"";
 
-  	$telnumber=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$telnumber=isset($_POST["tele"])?$_POST["tele"]:"";
 
-  	$zipcode=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$zipcode=isset($_POST["zip"])?$_POST["zip"]:"";
 
-  	$state=isset($_POST["Password"])?$_POST["Password"]:"";
+  	$state=isset($_POST["state"])?$_POST["state"]:"";
 
 
 
@@ -30,8 +30,8 @@
     if (mysql_num_rows($check) == 0){
 		echo "doesn't exist...  ";
 		/* make user */
-		$query2 = "INSERT INTO Users(email, password)VALUES";
-		$query2 = $query2 . "('".mysql_escape_string($email)."','".mysql_escape_string($password)."')";
+		$query2 = "INSERT INTO customers(email, pass, first_name, last_name, address, city, state, telNumber, zipcode)VALUES";
+		$query2 = $query2 . "('".mysql_escape_string($email)."','".mysql_escape_string($password)."','".mysql_escape_string($fname)."','".mysql_escape_string($lname)."','".mysql_escape_string($address)."','".mysql_escape_string($city)."','".mysql_escape_string($state)."','".mysql_escape_string($telnumber)."','".mysql_escape_string($zipcode)."')";
 
 		$insertion = mysql_query($query2);
 
