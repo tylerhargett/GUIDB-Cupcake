@@ -4,7 +4,7 @@
 
     $password=isset($_POST["password"])?$_POST["password"]:"";
 
-    $loginquery = " select * from Users where userName = '".mysql_escape_string($email)."' and pass = '".mysql_escape_string($password)."'";
+    $loginquery = " select * from customers where email = '".mysql_escape_string($email)."' and pass = '".mysql_escape_string($password)."'";
    	$loginresult = mysql_query($loginquery);
 
 
