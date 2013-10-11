@@ -39,6 +39,7 @@
     $count = $count +1;
 
     }
+    mysql_error($con);
     mysql_close($con);
     echo " END";
     
