@@ -1,5 +1,5 @@
 <?php
-$con = mysql_connect("Projectsite", "", "");
+$con = mysql_connect("localhost", "phpuser", "password");
     if(!$con)
     {
         die('Could not connect: ' . mysql_error());
@@ -7,7 +7,7 @@ $con = mysql_connect("Projectsite", "", "");
     mysql_select_db("cupcakes", $con)
         or die("Unable to connect to the database : " . mysql_error());
     
-$string = file_get_contents("A6/data/menu.json");
+$string = file_get_contents("/var/www/cupcakes/Res/A6/data/menu.json");
 
 $d = json_decode($string,true)["menu"];
 
