@@ -9,8 +9,8 @@
 	if (!strlen($id_arg))
 		die('Huh?');
 
-	$res = json_encode(mysql_fetch_assoc(mysql_query("SELECT FROM favorites WHERE id = '$id_arg'")));
-	echo "$res";
+	$res = mysql_query("SELECT * FROM favorites WHERE id='$id_arg'");
+	echo json_encode(mysql_fetch_assoc($res));
 	
 	mysql_free_result($res);
 	mysql_close();
