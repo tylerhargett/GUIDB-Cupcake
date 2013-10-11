@@ -23,7 +23,7 @@
 	include 'dbcon.php';
 	
 	/* check to see if user exists */
-	$query1 = " select * from Users where email = '".mysql_escape_string($email)."'";
+	$query1 = " select * from customers where email = '".mysql_escape_string($email)."'";
 
     $check = mysql_query($query1);
 
@@ -36,7 +36,7 @@
 		$insertion = mysql_query($query2);
 
 		/* confirm it worked */
-		$query3 = " select * from Users where userName = '".mysql_escape_string($email)."'";
+		$query3 = " select * from customers where email = '".mysql_escape_string($email)."'";
 
 		$confirm = mysql_query($query3);
 
