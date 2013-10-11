@@ -42,7 +42,6 @@
         }
     echo mysql_error($con);
     $count = $count +1;
-
     }
     mysql_close($con);
     echo " END";
