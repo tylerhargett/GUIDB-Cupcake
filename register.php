@@ -51,7 +51,7 @@
     else
 	   	/* login */
 		//include 'login.php';
-		echo "You already exist so we will log you in";
+		echo "You already exist.";
 
     mysql_close($con);
 
