@@ -44,17 +44,27 @@
 		<DIV ID="CreateAccount">
 			<H2>Create a Custom Cupcake Account</H2>
 			<hr>
-			<FORM>
-				<label>Join Our Mailing List:</label> <input type="radio" name="mailinglist" value="yes">Yes <input type="radio" name="mailinglist" value="no">No<br />
-				<label>First Name:</label> <input type><br />
-				<label>Last Name:</label> <input type><br />
-				<label>Email:</label> <input type><br />
-				<label>Password:</label> <input type><br />
-				<label>Telephone Number:</label> <input type><br />
-				<label>Address:</label> <input type><br />
-				<label>City:</label> <input type><br />
-				<label>State:</label> <input type><br />
-				<label>Zip Code:</label> <input type><br />
+			<FORM NAME="reg" onsubmit="return validateRegistration()" >
+				<label>Join Our Mailing List:</label> <input type="radio" name="mailinglist" value="yes">Yes <input type="radio" name="mailinglist" value="no">No
+					<DIV ID="err1"></DIV><br />
+				<label>First Name:</label> <input type="text" name="fname">
+					<DIV ID="err2"></DIV><br />
+				<label>Last Name:</label> <input type="text" name="lname">
+					<DIV ID="err3"></DIV><br />
+				<label>Email:</label> <input type="text" name="email">
+					<DIV ID="err4"></DIV><br />
+				<label>Password:</label> <input type="text" name="pw">
+					<DIV ID="err5"></DIV><br />
+				<label>Telephone Number:</label> <input type="text" name="tele">
+					<DIV ID="err6"></DIV><br />
+				<label>Address:</label> <input type="text" name="addr">
+					<DIV ID="err7"></DIV><br />
+				<label>City:</label> <input type="text" name="city">
+					<DIV ID="err8"></DIV><br />
+				<label>State:</label> <input type="text" name="state">
+					<DIV ID="err9"></DIV><br />
+				<label>Zip Code:</label> <input type="text" name="zip">
+					<DIV ID="err10"></DIV><br />
 				<DIV><input type="submit" value="Submit"></DIV>
 			</FORM>
 		
