@@ -16,7 +16,7 @@
         or die("Unable to connect to the database : " . mysql_error());
     
     
-    $file_handle = fopen("/var/www/cupcakes/Res/A6/data/CustomCupcakesDBData-FavoriteCupcakes.csv", "r");
+    $file_handle = fopen("/var/www/cupcakes/Res/A6/data/CustomCupcakesDBData - FavoriteCupcakes.csv", "r");
     $count = 0;
     
     while (!feof($file_handle))
