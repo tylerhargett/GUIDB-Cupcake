@@ -3,7 +3,7 @@
 	if (!$c)
 		die('Could not connect: '.mysql_error());
 	
-	mysql_select_db("Cupcakes", $c) or die('No DB?');
+	mysql_select_db("cupcakes", $c) or die('No DB?');
 
 	$id_arg = mysql_real_escape_string($_GET['id']);
 	if (!strlen($id_arg))
