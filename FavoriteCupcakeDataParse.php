@@ -7,16 +7,10 @@
 #  Created by Tyler Hargett on 10/4/13.
 #
     #create connection - FILL IN SERVER USERNAME AND PASSWORD
-    $con = mysql_connect("Projectsite", "", "");
-    if(!$con)
-    {
-        die('Could not connect: ' . mysql_error());
-    }
-    mysql_select_db("cupcakes", $con)
-        or die("Unable to connect to the database : " . mysql_error());
+    include dbcon.php;
     
     
-    $file_handle = fopen("A6/data/CustomCupcakesDBData-FavoriteCupcakes.csv", "r");
+    $file_handle = fopen("Res/A6/data/CustomCupcakesDBData-FavoriteCupcakes.csv", "r");
     $count = 0;
     
     while (!feof($file_handle))
