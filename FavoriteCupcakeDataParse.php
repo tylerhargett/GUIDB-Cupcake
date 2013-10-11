@@ -12,7 +12,7 @@
     {
         die('Could not connect: ' . mysql_error());
     }
-    mysql_select_db("Cupcakes", $con)
+    mysql_select_db("cupcakes", $con)
         or die("Unable to connect to the database : " . mysql_error());
     
     
