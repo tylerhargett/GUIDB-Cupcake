@@ -9,7 +9,8 @@ $con = mysql_connect("localhost", "phpuser", "password");
     
 $string = file_get_contents("/var/www/cupcakes/Res/A6/data/menu.json");
 
-$d = json_decode($string,true)["menu"];
+$d = json_decode($string,true); 
+$d = $d["menu"];
 
 foreach($d["cakes"] as $i) {
 $flavor = $i["flavor"];
