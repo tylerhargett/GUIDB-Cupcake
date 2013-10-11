@@ -7,7 +7,7 @@
 <BODY>
 	<DIV ID="Login">
 		<FORM name="login" ACTION="login.php" METHOD="POST">
-			Email: <input type="text" name="email" size="20"> Password: <input type="text" name="pw"> <input type="submit" value="Login">
+			Email: <input type="text" name="firstname" size="20"> Password: <input type="text" name="lastname"> <input type="submit" value="Login">
 		</FORM>
 	</DIV>
 	<br /><br />

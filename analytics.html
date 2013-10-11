@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+	<TITLE>Custom Cupcakes</TITLE>
+	<LINK REL="stylesheet" TYPE="text/css" HREF="css/analytics.css">
+	<script src="js/Chart.js"></script>	
+	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+		
+</HEAD>
+<BODY>
+	
+	<br /><br />
+	<DIV ID="navBarContainer">
+		
+	</DIV>
+	<DIV ID="Container">
+		
+
+	
+		
+		<div id="pie">
+
+		<div class="chart_name"> 
+			<canvas id="canvas" height="150" width="150"></canvas>
+			
+			
+		</div>	
+
+		<div class="chart_name">
+			<canvas id="canvas1" height="150" width="150"></canvas>
+			
+		</div>	
+
+		<div class"chart_name">
+			<canvas id="canvas2" height="150" width="150"></canvas>
+			
+
+		</div>	
+		
+		</div>
+
+
+
+		<div id="bar">
+
+			<div>
+
+				<canvas id="canvas3" height="300" width="700"></canvas>
+
+
+
+			</div>
+
+
+		</div>
+
+	</DIV>
+		<script>
+
+		var pieData = [
+
+			
+				{
+					value: 30,
+					color:"#F38630"
+
+
+				},
+				{
+					value : 50,
+					color : "#E0E4CC"
+				},
+				{
+					value : 100,
+					color : "#69D2E7"
+				}
+			
+			];
+
+	var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+
+	var myPie = new Chart(document.getElementById("canvas1").getContext("2d")).Pie(pieData);
+
+	var myPie = new Chart(document.getElementById("canvas2").getContext("2d")).Pie(pieData);
+
+
+	var barChartData = {
+			labels : ["Topping1","Topping2","Topping3","Topping4","Topping5","Topping6","Topping7"],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					data : [28,48,40,19,96,27,100]
+				}
+			]
+			
+		}
+
+	var myLine = new Chart(document.getElementById("canvas3").getContext("2d")).Bar(barChartData);
+
+	</script>
+
+
+
+	</DIV>
+</BODY>
+</HTML>
